@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  mysql:
+    image: abdallah7959/mysql_server:v3
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: part1
+    ports:
+      - "7071:80"
+    container_name: server_mysql
+
+  phpmyadmin:
+    image: phpmyadmin
+    environment:
+      PMA_ARBITRARY: 1
+    ports:
+      - "7070:80"
+    container_name: phpmyadmin23
+
+  frontend:
+    image: abdallah7959/front:v2.1
+    ports:
+      - "6060:80"
+    container_name: frontend
+
+  backend:
+    image: abdallah7959/back:v2
+    ports:
+      - "6061:80"
+    container_name: backend
